@@ -1,0 +1,8 @@
+tile.contenttweaker.proton.name=Proton Absorber
+tile.contenttweaker.proton_empty.name=Proton Absorber (Empty)
+tile.contenttweaker.neutron.name=Neutron Absorber
+tile.contenttweaker.neutron_empty.name=Neutron Absorber (Empty)
+tile.contenttweaker.collider_lv1.name=Collider (Tier 1)
+item.contenttweaker.collider_starter.name=Collider Starter
+contenttweaker.part.nucleus=%s Crystal Nucleus
+contenttweaker.part.booster=%s Metal Booster

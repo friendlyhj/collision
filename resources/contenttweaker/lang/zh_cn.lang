@@ -1,0 +1,8 @@
+tile.contenttweaker.proton.name=质子吸收载体
+tile.contenttweaker.proton_empty.name=质子吸收载体（空）
+tile.contenttweaker.neutron.name=中子吸收载体
+tile.contenttweaker.neutron_empty.name=中子吸收载体（空）
+tile.contenttweaker.collider_lv1.name=1级粒子碰撞器
+item.contenttweaker.collider_starter.name=粒子碰撞器启动器
+contenttweaker.part.nucleus=%s晶核
+contenttweaker.part.booster=%s金属增幅器
