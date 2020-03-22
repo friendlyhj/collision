@@ -1,4 +1,4 @@
-import scripts.collision.UtilCrt.matchBlockState;
+import scripts.collision.util.UtilCrt.matchBlockState;
 
 print("test!");
 print(<ore:oreCopper>.firstItem.definition.id);

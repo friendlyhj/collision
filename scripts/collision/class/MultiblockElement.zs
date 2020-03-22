@@ -3,7 +3,6 @@
 #priority 2500
 import mods.contenttweaker.BlockState;
 
-
 // TODO 
 // BlockState => string (preinit阶段大部分方块仍未注册)
 zenClass MultiblockElement {

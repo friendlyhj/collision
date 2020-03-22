@@ -15,9 +15,9 @@ import crafttweaker.entity.IEntity;
 import crafttweaker.entity.IEntityLivingBase;
 import scripts.grassUtils.EventUtils;
 
-import scripts.collision.MultiblockCrt.Multiblock;
-import scripts.collision.MultiblockCrt.newMultiblock;
-import scripts.collision.UtilCrt as Util;
+import scripts.collision.class.MultiblockCrt.Multiblock;
+import scripts.collision.class.MultiblockCrt.newMultiblock;
+import scripts.collision.util.UtilCrt as Util;
 
 static bone as IBlockState = <blockstate:minecraft:bone_block>;
 static witherAltar as Multiblock = newMultiblock()

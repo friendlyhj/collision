@@ -26,46 +26,6 @@ import crafttweaker.world.IFacing;
 import scripts.grassUtils.CotUtils;
 import scripts.grassUtils.EventUtilsCot;
 
-CotUtils.addBlock("proton", <blockmaterial:rock>, 1.0f, 40, <soundtype:stone>, 12, false, "pickaxe", 0);
-CotUtils.addBlock("neutron", <blockmaterial:rock>, 1.0f, 40, <soundtype:stone>, 12, false, "pickaxe", 0);
-CotUtils.addBlock("collider_lv1", <blockmaterial:iron>, 3.0f, 120, <soundtype:metal>, 0, false, "pickaxe", 0);
-CotUtils.addBlock("collider_lv2", <blockmaterial:iron>, 3.0f, 120, <soundtype:metal>, 0, false, "pickaxe", 0);
-CotUtils.addBlock("collider_lv3", <blockmaterial:iron>, 3.0f, 120, <soundtype:metal>, 0, false, "pickaxe", 1);
-CotUtils.addBlock("collider_lv4", <blockmaterial:iron>, 3.0f, 120, <soundtype:metal>, 0, false, "pickaxe", 2);
-CotUtils.addBlock("plank_wood", <blockmaterial:wood>, 2.0f, 40, <soundtype:wood>, 0, false, "axe", 0);
-CotUtils.addBlock("proton_empty_refined", <blockmaterial:rock>, 2.5f, 40, <soundtype:stone>, 0, false, "pickaxe", 1);
-CotUtils.addBlock("neutron_empty_refined", <blockmaterial:rock>, 2.5f, 40, <soundtype:stone>, 0, false, "pickaxe", 1);
-CotUtils.addBlock("proton_refined", <blockmaterial:rock>, 2.5f, 40, <soundtype:stone>, 0, false, "pickaxe", 1);
-CotUtils.addBlock("neutron_refined", <blockmaterial:rock>, 2.5f, 40, <soundtype:stone>, 0, false, "pickaxe", 1);
-CotUtils.addNormalItem("metal_chunk");
-CotUtils.addNormalItem("mystical_gem");
-CotUtils.addNormalItem("little_ghast_drop");
-CotUtils.addNormalItem("wither_skull_piece");
-
-val proton as Block = VanillaFactory.createBlock("proton_empty", <blockmaterial:rock>);
-proton.blockHardness = 1.0f;
-proton.setBlockSoundType(<soundtype:stone>);
-proton.setToolClass("pickaxe");
-proton.setToolLevel(0);
-proton.onRandomTick = function(world, blockPos, blockState){
-    if (!world.remote && world.canSeeSky(blockPos.getOffset("up", 1)) && world.dayTime && world.getRandom().nextBoolean()) {
-        world.setBlockState(<block:contenttweaker:proton>, blockPos);
-    }
-};
-proton.register();
-
-val neutron as Block = VanillaFactory.createBlock("neutron_empty", <blockmaterial:rock>);
-neutron.blockHardness = 1.0f;
-neutron.setBlockSoundType(<soundtype:stone>);
-neutron.setToolClass("pickaxe");
-neutron.setToolLevel(0);
-neutron.onRandomTick = function(world, blockPos, blockState){
-    if (!world.remote && world.canSeeSky(blockPos.getOffset("up", 1)) && world.dayTime && world.getRandom().nextBoolean()) {
-        world.setBlockState(<block:contenttweaker:neutron>, blockPos);
-    }
-};
-neutron.register();
-
 function wandFunction(world as World, pos as BlockPos, lib as byte[][][IItemStack], player as Player, pnArray as BlockState[], pnEmptyArray as BlockState[]) as ActionResult {
     for x in 0 .. 3 {
         for z in 0 .. 3 {
@@ -136,49 +96,21 @@ val wand as Item = VanillaFactory.createItem("collider_starter");
 wand.maxStackSize = 1;
 wand.onItemUse = function(player, world, pos, hand, facing, blockHit) {
     if (world.getBlockState(pos) == <block:contenttweaker:collider_lv1>) {
-        return wandFunction(world, pos, scripts.collision.ColliderRecipes.colliderRecipesOne, player,
+        return wandFunction(world, pos, scripts.collision.recipe.ColliderRecipes.colliderRecipesOne, player,
         [<block:contenttweaker:proton>, <block:contenttweaker:neutron>], [<block:contenttweaker:proton_empty>, <block:contenttweaker:neutron_empty>]);
     }
     if (world.getBlockState(pos) == <block:contenttweaker:collider_lv2>) {
-        return wandFunction(world, pos, scripts.collision.ColliderRecipes.colliderRecipesTwo, player,
+        return wandFunction(world, pos, scripts.collision.recipe.ColliderRecipes.colliderRecipesTwo, player,
         [<block:contenttweaker:proton>, <block:contenttweaker:neutron>], [<block:contenttweaker:proton_empty>, <block:contenttweaker:neutron_empty>]);
     }
     if (world.getBlockState(pos) == <block:contenttweaker:collider_lv3>) {
-        return wandFunction(world, pos, scripts.collision.ColliderRecipes.colliderRecipesThree, player,
+        return wandFunction(world, pos, scripts.collision.recipe.ColliderRecipes.colliderRecipesThree, player,
         [<block:contenttweaker:proton_refined>, <block:contenttweaker:neutron_refined>], [<block:contenttweaker:proton_empty_refined>, <block:contenttweaker:neutron_empty_refined>]);
     }
     if (world.getBlockState(pos) == <block:contenttweaker:collider_lv4>) {
-        return wandFunction(world, pos, scripts.collision.ColliderRecipes.colliderRecipesFour, player,
+        return wandFunction(world, pos, scripts.collision.recipe.ColliderRecipes.colliderRecipesFour, player,
         [<block:contenttweaker:proton_refined>, <block:contenttweaker:neutron_refined>], [<block:contenttweaker:proton_empty_refined>, <block:contenttweaker:neutron_empty_refined>]);
     }
     return ActionResult.pass();
 };
 wand.register();
-
-val water as Item = VanillaFactory.createItem("water_drop");
-water.maxStackSize = 1;
-water.onItemUse = function(player, world, pos, hand, facing, blockHit) {
-    if (world.getBlockState(pos.getOffset(facing, 1)) == <block:minecraft:air>) {
-        if (!world.remote) {
-            world.setBlockState(<block:minecraft:water>, pos.getOffset(facing, 1));
-            player.getHeldItem(hand).shrink(1);
-        }
-        return ActionResult.success();
-    }
-    return ActionResult.pass();
-};
-water.register();
-
-val lava as Item = VanillaFactory.createItem("lava_drop");
-lava.maxStackSize = 1;
-lava.onItemUse = function(player, world, pos, hand, facing, blockHit) {
-    if (world.getBlockState(pos.getOffset(facing, 1)) == <block:minecraft:air>) {
-        if (!world.remote) {
-            world.setBlockState(<block:minecraft:lava>, pos.getOffset(facing, 1));
-            player.getHeldItem(hand).shrink(1);
-        }
-        return ActionResult.success();
-    }
-    return ActionResult.pass();
-};
-lava.register();

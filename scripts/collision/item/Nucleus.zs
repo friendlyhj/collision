@@ -7,7 +7,7 @@ import scripts.grassUtils.classes.MaterialSystemHelper.MaterialSystemHelper;
 import mods.contenttweaker.Material;
 
 static sys as MaterialSystemHelper = CotUtils.getMaterialSystemHelper();
-for key, value in scripts.collision.OreArray.oreList {
+for key, value in scripts.collision.data.OreArray.oreList {
     sys.registerMaterial(key, value[0]);
 }
 

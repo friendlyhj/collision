@@ -2,7 +2,6 @@
 #loader contenttweaker
 #priority 297
 #ikwid
-
 import mods.contenttweaker.VanillaFactory;
 import mods.contenttweaker.Block;
 import mods.contenttweaker.MaterialSystem;
@@ -105,4 +104,4 @@ val boosterType as PartType = MaterialSystem.createPartType("booster", function(
 
 val boosterPart as Part = MaterialSystem.getPartBuilder().setName("booster").setPartType(boosterType).setOreDictName("booster").build();
 
-boosterPart.registerToMaterials(scripts.collision.Nucleus.materialList.values);
+boosterPart.registerToMaterials(scripts.collision.item.Nucleus.materialList.values);

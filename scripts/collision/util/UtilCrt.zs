@@ -5,7 +5,7 @@ import crafttweaker.block.IBlockState;
 import crafttweaker.world.IBlockPos;
 import crafttweaker.world.IWorld;
 import scripts.grassUtils.EventUtils;
-import scripts.collision.MultiblockCrt.Multiblock;
+import scripts.collision.class.MultiblockCrt.Multiblock;
 
 function multiblockMatcher(multiblock as Multiblock, world as IWorld, coreWorldPos as IBlockPos) as bool {
     for name, element in multiblock.asMap() {

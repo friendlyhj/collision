@@ -5,7 +5,7 @@ import mods.contenttweaker.BlockState;
 import mods.contenttweaker.BlockPos;
 import mods.contenttweaker.World;
 import scripts.grassUtils.EventUtilsCot as EventUtils;
-import scripts.collision.Multiblock.Multiblock;
+import scripts.collision.class.Multiblock.Multiblock;
 
 function multiblockMatcher(multiblock as Multiblock, world as World, coreWorldPos as BlockPos) as bool {
     for name, element in multiblock.asMap() {

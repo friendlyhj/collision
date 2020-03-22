@@ -10,12 +10,9 @@ import mods.contenttweaker.Hand;
 import mods.contenttweaker.ActionResult;
 import crafttweaker.entity.IEntityEquipmentSlot;
 
-import scripts.grassUtils.CotUtils;
-import scripts.collision.Util;
-import scripts.collision.Multiblock.Multiblock;
-import scripts.collision.Multiblock.newMultiblock;
-
-CotUtils.addBlock("wither_altar", <blockmaterial:iron>, 3.0f, 120, <soundtype:metal>, 0, false, "pickaxe", 2);
+import scripts.collision.util.Util;
+import scripts.collision.class.Multiblock.Multiblock;
+import scripts.collision.class.Multiblock.newMultiblock;
 
 /* static bone as BlockState = <block:minecraft:bone_block>;
 static witherAltar as Multiblock = newMultiblock()
@@ -54,18 +51,3 @@ witherAltarWand.onItemUse = function(player, world, pos, hand, facing, blockHit)
     return ActionResult.pass();
 };
 witherAltarWand.register();
-
-val debugger as Item = VanillaFactory.createItem("debugger");
-debugger.onItemUse = function(player, world, pos, hand, facing, blockHit) {
-    if (!world.remote) {
-        val state as BlockState = world.getBlockState(pos);
-        player.sendMessage(state.block.definition.id);
-        player.sendMessage(state.block.meta);
-        if (!isNull(state.block.data)) {
-            player.sendMessage(state.block.data.asString());
-        }
-    }
-    return ActionResult.success();
-};
-debugger.register();
-

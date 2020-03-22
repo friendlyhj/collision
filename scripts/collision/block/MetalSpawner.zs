@@ -11,7 +11,7 @@ import crafttweaker.oredict.IOreDict;
 static metalList as string[] = [];
 static list as int[] = [];
 static n as int = 0;
-for key, value in scripts.collision.OreArray.oreList {
+for key, value in scripts.collision.data.OreArray.oreList {
     n += value[1];
     metalList += key;
     list += n;
