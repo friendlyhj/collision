@@ -18,14 +18,15 @@ function multiblockMatcher(multiblock as Multiblock, world as World, coreWorldPo
     return true;
 }
 
-function matchBlockState(state1 as BlockState, state2 as BlockState) as bool {
-    return state1.block.definition.id == state2.block.definition.id;
+function matchBlockState(stateID as string, stateToCompare as BlockState) as bool {
+    return stateID == stateToCompare.block.definition.id;
 }
 
-function multiblockBuilder(multiblock as Multiblock, world as World, corePos as BlockPos) {
+// FIXME!
+/* function multiblockBuilder(multiblock as Multiblock, world as World, corePos as BlockPos) {
     for name, element in multiblock.asMap() {
         for block, pos in element {
             world.setBlockState(block, EventUtils.getOffset(corePos, pos[0], pos[1], pos[2]));
         }
     }
-}
+} */

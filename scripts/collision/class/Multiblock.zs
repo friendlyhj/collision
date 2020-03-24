@@ -1,19 +1,16 @@
 // by: youyihj
 #loader contenttweaker
 #priority 2499
-import mods.contenttweaker.BlockState;
 import scripts.collision.class.MultiblockElement.newElement;
 import scripts.collision.class.MultiblockElement.MultiblockElement;
 
-// TODO 
-// BlockState => string (preinit阶段大部分方块仍未注册)
 zenClass Multiblock {
     zenConstructor() {
     }
 
     var elements as MultiblockElement[string] = {};
 
-    function addElement(name as string, block as BlockState, pos as int[]) as Multiblock {
+    function addElement(name as string, block as string, pos as int[]) as Multiblock {
         this.elements[name] = newElement(block, pos);
         return this;
     }
@@ -22,8 +19,8 @@ zenClass Multiblock {
         return this.elements[name];
     }
 
-    function asMap() as int[][BlockState][string] {
-        var temp as int[][BlockState][string] = {};
+    function asMap() as int[][string][string] {
+        var temp as int[][string][string] = {};
         for name, element in this.elements {
             temp[name] = element.asMap();
         }
