@@ -94,11 +94,11 @@ val boosterType as PartType = MaterialSystem.createPartType("booster", function(
     };
     block.textureLocation = mods.contenttweaker.ResourceLocation.create("contenttweaker:blocks/booster");
     block.itemColorSupplier = function(item, tintIndex) as Color {
-		return Color.fromInt(MaterialSystem.getMaterial(item.definition.id.split("_")[1][0].toUpperCase() ~ item.definition.id.split("_")[1].substring(1)).getColor());
-	};
-	block.blockColorSupplier = function(state, access, pos, tintIndex) as Color {
-    	return Color.fromInt(MaterialSystem.getMaterial(state.block.definition.id.split("_")[1][0].toUpperCase() ~ state.block.definition.id.split("_")[1].substring(1)).getColor());
-	};
+        return Color.fromInt(MaterialSystem.getMaterial(item.definition.id.split("_")[1][0].toUpperCase() ~ item.definition.id.split("_")[1].substring(1)).getColor());
+    };
+    block.blockColorSupplier = function(state, access, pos, tintIndex) as Color {
+        return Color.fromInt(MaterialSystem.getMaterial(state.block.definition.id.split("_")[1][0].toUpperCase() ~ state.block.definition.id.split("_")[1].substring(1)).getColor());
+    };
     block.register();
 });
 
