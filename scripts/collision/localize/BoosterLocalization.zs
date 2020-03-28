@@ -14,6 +14,6 @@ for item in loadedMods["contenttweaker"].items {
         val langKey as string = "tile.contenttweaker.booster_" ~ type ~ ".name";
         game.setLocalization("en_us", "base.material." ~ type, StringHelper.toUpperCamelCase(type));
         val langType as string = game.localize("base.material." ~ type);
-        game.setLocalization(client.language, langKey, GrassUtils.i18nValued(GrassUtils.i18n("contenttweaker.part.booster"), [game.localize(langType)]));
+        game.setLocalization(client.language, langKey, GrassUtils.i18nValued("contenttweaker.part.booster", [langType]));
     }
 }
